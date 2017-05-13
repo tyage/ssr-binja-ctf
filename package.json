@@ -1,0 +1,19 @@
+{
+  "name": "ssr-binja-ctf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tyage/ssr-binja-ctf.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tyage/ssr-binja-ctf/issues"
+  },
+  "homepage": "https://github.com/tyage/ssr-binja-ctf#readme"
+}
