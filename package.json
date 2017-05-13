@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/tyage/ssr-binja-ctf/issues"
   },
-  "homepage": "https://github.com/tyage/ssr-binja-ctf#readme"
+  "homepage": "https://github.com/tyage/ssr-binja-ctf#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "react-redux": "^5.0.4"
+  }
 }
