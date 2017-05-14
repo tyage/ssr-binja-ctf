@@ -1,10 +1,14 @@
-export default (state = 0, action) => {
+export default (state, action) => {
+  let counter = state.counter
   switch (action.type) {
     case 'INCREMENT':
-      return state + 1
+      counter += 1
+      break
     case 'DECREMENT':
-      return state - 1
+      counter -= 1
+      break
     default:
-      return state
+      break
   }
+  return { counter }
 }

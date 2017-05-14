@@ -7,19 +7,13 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onIncrement: () => {
-      return {
-        type: 'INCREMENT'
-      }
-    },
-    onDecrement: () => {
-      return {
-        type: 'DECREMENT'
-      }
-    }
-  }
+const mapDispatchToProps = {
+  onIncrement: () => ({
+    type: 'INCREMENT'
+  }),
+  onDecrement: () => ({
+    type: 'DECREMENT'
+  })
 }
 
 const App = connect(
