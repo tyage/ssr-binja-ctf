@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     onDecrement: () => {
       return {
-        type: 'INCREMENT'
+        type: 'DECREMENT'
       }
     }
   }
