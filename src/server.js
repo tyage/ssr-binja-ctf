@@ -1,62 +1,42 @@
-import qs from 'qs'
-import path from 'path'
 import Express from 'express'
 import React from 'react'
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import counterApp from './reducers'
-import App from './containers/App'
 import { renderToString } from 'react-dom/server'
+import { StaticRouter } from 'react-router'
+import App from './App'
 
 const app = Express()
-const port = 3000
 
-//Serve static files
 app.use('/static', Express.static('static'))
 
-// This is fired every time the server side receives a request
-app.use(handleRender)
-
-function handleRender(req, res) {
-  const params = qs.parse(req.query)
-  const counter = parseInt(params.counter, 10) || 0
-  let preloadedState = { counter }
-
-  // Create a new Redux store instance
-  const store = createStore(counterApp, preloadedState)
-
-  // Render the component to a string
-  const html = renderToString(
-    <Provider store={store}>
+app.get('*', (req, res) => {
+  const context = {}
+  const appHtml = renderToString(
+    <StaticRouter
+      location={req.url}
+      context={context}
+    >
       <App />
-    </Provider>
+    </StaticRouter>
   )
 
-  // Grab the initial state from our Redux store
-  preloadedState = store.getState()
+  if (context.url) {
+    redirect(301, context.url)
+  } else {
+    res.send(renderPage(appHtml))
+  }
+})
 
-  // Send the rendered page back to the client
-  res.send(renderFullPage(html, preloadedState))
-}
-
-function renderFullPage(html, preloadedState) {
+function renderPage(appHtml) {
   return `
-    <!doctype html>
+    <!doctype html public="storage">
     <html>
-      <head>
-        <title>Redux Universal Example</title>
-      </head>
-      <body>
-        <div id="root">${html}</div>
-        <script>
-          // WARNING: See the following for security issues around embedding JSON in HTML:
-          // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
-          window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
-        </script>
-        <script src="/static/bundle.js"></script>
-      </body>
-    </html>
-    `
+    <meta charset=utf-8/>
+    <title>My First React Router App</title>
+    <link rel=stylesheet href=/index.css>
+    <div id=app>${appHtml}</div>
+    <script src="/static/client.js"></script>
+   `
 }
 
-app.listen(port)
+const PORT = process.env.PORT || 8080
+app.listen(PORT)

@@ -18,16 +18,14 @@
   "homepage": "https://github.com/tyage/ssr-binja-ctf#readme",
   "dependencies": {
     "express": "^4.15.2",
-    "qs": "^6.4.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-redux": "^5.0.4",
-    "redux": "^3.6.0"
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.4.0",
     "babel-preset-react": "^6.24.1",
     "webpack": "^2.5.1"
