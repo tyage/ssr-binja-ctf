@@ -18,7 +18,7 @@ const commonConfig = {
 const serverConfig = Object.assign({
   entry: './src/server.js',
   output: {
-    path: path.join(__dirname, 'static'),
+    path: path.join(__dirname, 'build'),
     filename: 'server.js'
   },
   target: 'node',
@@ -37,7 +37,7 @@ const serverConfig = Object.assign({
 const clientConfig = Object.assign({
   entry: './src/client.js',
   output: {
-    path: path.join(__dirname, 'static'),
+    path: path.join(__dirname, 'build'),
     filename: 'client.js'
   },
   devtool: 'inline-source-map'

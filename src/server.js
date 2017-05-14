@@ -6,7 +6,7 @@ import App from './App'
 
 const app = Express()
 
-app.use('/static', Express.static('static'))
+app.use('/build', Express.static('build'))
 
 app.get('*', (req, res) => {
   const context = {}
@@ -34,7 +34,7 @@ function renderPage(appHtml) {
     <title>My First React Router App</title>
     <link rel=stylesheet href=/index.css>
     <div id=app>${appHtml}</div>
-    <script src="/static/client.js"></script>
+    <script src="/build/client.js"></script>
    `
 }
 
