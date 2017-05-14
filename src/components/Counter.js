@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-class Home extends Component {
+class Counter extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      value: 0
+      value: parseInt(props.match.params.value, 10)
     }
   }
 
@@ -38,4 +38,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default Counter

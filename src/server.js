@@ -20,7 +20,7 @@ app.get('*', (req, res) => {
   )
 
   if (context.url) {
-    redirect(301, context.url)
+    res.redirect(301, context.url)
   } else {
     res.send(renderPage(appHtml))
   }

@@ -1,10 +1,11 @@
 import React from 'react'
-import { Switch, Route } from 'react-router'
-import Home from './components/Home'
+import { Switch, Route, Redirect } from 'react-router'
+import Counter from './components/Counter'
 
 const App = () => (
   <Switch>
-    <Route path="/" component={Home} />
+    <Route path="/counter/:value" component={Counter} />
+    <Redirect from='/' to='/counter/0' />
   </Switch>
 )
 
