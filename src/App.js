@@ -1,11 +1,12 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router'
-import Counter from './components/Counter'
+import { Login, Idols, Idol } from './components'
 
 const App = () => (
   <Switch>
-    <Route path="/counter/:value" component={Counter} />
-    <Redirect from='/' to='/counter/0' />
+    <Route path="/login" component={Login} />
+    <Route path="/idols" component={Idols} />
+    <Route path="/idols/:type/:index" component={Idol} />
   </Switch>
 )
 
