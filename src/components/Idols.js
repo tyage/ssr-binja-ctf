@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { getNewIdol } from '../libs/idols'
 
 class Idols extends Component {
   constructor(props) {
@@ -18,10 +20,12 @@ class Idols extends Component {
   render() {
     const { idols } = this.state
     const idolList = () => {
-      return idols.map((idol) => {
+      return idols.map(([idolName, rarity], i) => {
         return (
-          <li>
-            { idol }
+          <li key={i}>
+            <Link to={ `/idols/${idolName}/${rarity}` }>
+              { `${idolName} (${rarity})` }
+            </Link>
           </li>
         )
       })
