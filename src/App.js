@@ -5,8 +5,8 @@ import { Login, Idols, Idol } from './components'
 const App = () => (
   <Switch>
     <Route path="/login" component={Login} />
+    <Route path="/idols/:idolName/:rarity" component={Idol} />
     <Route path="/idols" component={Idols} />
-    <Route path="/idols/:type/:index" component={Idol} />
   </Switch>
 )
 

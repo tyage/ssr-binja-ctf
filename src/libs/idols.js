@@ -20,3 +20,4 @@ export const getNewIdol = () => {
   const idolRarity = getRandomItem(Object.keys(idols[idolName]))
   return [idolName, idolRarity]
 }
+export const getIdol = (name, rarity) => idols[name][rarity]

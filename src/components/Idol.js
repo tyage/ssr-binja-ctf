@@ -1,18 +1,17 @@
 import React, { Component } from 'react'
+import { getIdol } from '../libs/idols'
 
 class Idol extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      idols: []
-    }
   }
 
   render() {
-    const { idols } = this.state
-
+    const { idolName, rarity } = this.props.match.params
+    const idol = getIdol(idolName, rarity)
     return (
       <div>
+        { idol('producer') }
       </div>
     )
   }
