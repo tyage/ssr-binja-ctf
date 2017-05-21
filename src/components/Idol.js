@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withCookies } from 'react-cookie'
 import { getIdol } from '../libs/idols'
 
 class Idol extends Component {
@@ -8,13 +9,14 @@ class Idol extends Component {
 
   render() {
     const { idolName, rarity } = this.props.match.params
+    const { cookies } = this.props
     const idol = getIdol(idolName, rarity)
     return (
       <div>
-        { idol('producer') }
+        { idol(cookies.get('name')) }
       </div>
     )
   }
 }
 
-export default Idol
+export default withCookies(Idol)

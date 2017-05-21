@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { withCookies } from 'react-cookie'
 import { getNewIdol } from '../libs/idols'
 
 class Idols extends Component {

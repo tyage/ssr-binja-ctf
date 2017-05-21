@@ -2,11 +2,13 @@ import Express from 'express'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router'
+import cookiesMiddleware from 'universal-cookie-express'
 import App from './App'
 
 const app = Express()
 
 app.use('/build', Express.static('build'))
+  .use(cookiesMiddleware())
 
 app.get('*', (req, res) => {
   const context = {}
@@ -15,7 +17,7 @@ app.get('*', (req, res) => {
       location={req.url}
       context={context}
     >
-      <App />
+      <App cookies={req.universalCookies} />
     </StaticRouter>
   )
 
