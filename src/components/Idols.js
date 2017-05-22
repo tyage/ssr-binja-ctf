@@ -1,18 +1,25 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { withCookies } from 'react-cookie'
-import { getNewIdol } from '../libs/idols'
+import { getNewIdol, unserializeIdols, serializeIdols } from '../libs/idols'
 
 class Idols extends Component {
   constructor(props) {
     super(props)
+
+    const { cookies } = this.props
     this.state = {
-      idols: []
+      idols: unserializeIdols(cookies.get('idols'))
     }
   }
 
   onGacha() {
-    this.state.idols.push(getNewIdol())
+    const { cookies } = this.props
+
+    this.state.idols.push(getNewIdol({
+      producerName: cookies.get('username')
+    }))
+    cookies.set('idols', serializeIdols(this.state.idols))
     this.setState({
       idols: this.state.idols
     })
@@ -21,11 +28,11 @@ class Idols extends Component {
   render() {
     const { idols } = this.state
     const idolList = () => {
-      return idols.map(([idolName, rarity], i) => {
+      return idols.map((idol, i) => {
         return (
           <li key={i}>
-            <Link to={ `/idols/${idolName}/${rarity}` }>
-              { `${idolName} (${rarity})` }
+            <Link to={ `/idols/${i}` }>
+              { `${idol.name} (${idol.rarity})` }
             </Link>
           </li>
         )
@@ -45,4 +52,4 @@ class Idols extends Component {
   }
 }
 
-export default Idols
+export default withCookies(Idols)

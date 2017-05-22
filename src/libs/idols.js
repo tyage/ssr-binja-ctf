@@ -1,12 +1,27 @@
-const idols = {
+class Idol {
+  constructor(props) {
+    this.props = Object.assign(props, {
+      defaultAction: 'say'
+    })
+  }
+  say() {}
+}
+
+class SRUzuki extends Idol {
+  say() {
+    return `Hello ${this.props.producerName}! This is uzuki! Ganbarimasu!`
+  }
+}
+
+const idolFactories = {
   uzuki: {
-    sr: (name) => `Hello ${name}! This is uzuki! Ganbarimasu!`
+    sr: (props) => new SRUzuki(props)
   },
   rin: {
-    sr: (name) => `Hello ${name}! This is rin! Ganbarimasu!`
+    sr: (props) => new SRUzuki(props)
   },
   mio: {
-    sr: (name) => `Hello ${name}! This is mio! Ganbarimasu!`
+    sr: (props) => new SRUzuki(props)
   }
 }
 
@@ -15,9 +30,30 @@ const getRandomItem = (items) => {
   return items[index]
 }
 
-export const getNewIdol = () => {
-  const idolName = getRandomItem(Object.keys(idols))
-  const idolRarity = getRandomItem(Object.keys(idols[idolName]))
-  return [idolName, idolRarity]
+export const getNewIdol = (props) => {
+  const name = getRandomItem(Object.keys(idolFactories))
+  const rarity = getRandomItem(Object.keys(idolFactories[name]))
+  const idol = idolFactories[name][rarity](props)
+  idol.name = name
+  idol.rarity = rarity
+  return idol
 }
-export const getIdol = (name, rarity) => idols[name][rarity]
+export const serializeIdols = (idols) => {
+  if (!idols) {
+    return []
+  }
+
+  return idols.map(idol => {
+    return {name: idol.name, rarity: idol.rarity, props: idol.props }
+  })
+}
+export const unserializeIdols = (idolsData) => {
+  if (!idolsData) {
+    return []
+  }
+
+  return idolsData.map(({name, rarity, props}) => {
+    const idolClass = idolFactories[name][rarity]
+    return new idolClass(props)
+  })
+}

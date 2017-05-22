@@ -8,12 +8,14 @@ class Idol extends Component {
   }
 
   render() {
-    const { idolName, rarity } = this.props.match.params
+    const { id } = this.props.match.params
     const { cookies } = this.props
-    const idol = getIdol(idolName, rarity)
+    const idol = getIdol(idolName, rarity, {
+      producerName: cookies.get('username')
+    })
     return (
       <div>
-        { idol(cookies.get('name')) }
+        { idol[action]() }
       </div>
     )
   }
