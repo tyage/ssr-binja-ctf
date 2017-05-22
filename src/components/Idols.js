@@ -32,7 +32,7 @@ class Idols extends Component {
         return (
           <li key={i}>
             <Link to={ `/idols/${i}` }>
-              { `${idol.name} (${idol.rarity})` }
+              { `${idol.idolName} (${idol.rarity})` }
             </Link>
           </li>
         )

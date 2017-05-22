@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { withCookies } from 'react-cookie'
-import { getIdol } from '../libs/idols'
+import { unserializeIdols } from '../libs/idols'
 
 class Idol extends Component {
   constructor(props) {
@@ -8,14 +9,26 @@ class Idol extends Component {
   }
 
   render() {
-    const { id } = this.props.match.params
+    const { id, action } = this.props.match.params
     const { cookies } = this.props
-    const idol = getIdol(idolName, rarity, {
-      producerName: cookies.get('username')
-    })
+    const idol = unserializeIdols(cookies.get('idols'))[id]
+    if (!idol) {
+      return <div>Invalid Idol!!</div>
+    }
+
+    const idolAction = action || 'say1'
+    if (!idol[idolAction]) {
+      return <div>Invalid Action!!</div>
+    }
+
     return (
       <div>
-        { idol[action]() }
+        <p>{ idol[idolAction]() }</p>
+        <div>
+          <Link to={ `/idols/${id}/say1` }>voice 1</Link>
+          <Link to={ `/idols/${id}/say2` }>voice 2</Link>
+          <Link to={ `/idols/${id}/say3` }>voice 3</Link>
+        </div>
       </div>
     )
   }

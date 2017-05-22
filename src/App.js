@@ -7,6 +7,7 @@ const App = ({ cookies }) => (
   <CookiesProvider cookies={cookies}>
     <Switch>
       <Route path="/login" component={Login} />
+      <Route path="/idols/:id/:action" component={Idol} />
       <Route path="/idols/:id" component={Idol} />
       <Route path="/idols" component={Idols} />
     </Switch>
