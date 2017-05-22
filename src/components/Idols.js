@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { withCookies } from 'react-cookie'
-import { getNewIdol, unserializeIdols, serializeIdols } from '../libs/idols'
+import { getRandomIdol, unserializeIdols, serializeIdols } from '../libs/idols'
 
 class Idols extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class Idols extends Component {
   onGacha() {
     const { cookies } = this.props
 
-    this.state.idols.push(getNewIdol({
+    this.state.idols.push(getRandomIdol({
       producerName: cookies.get('username')
     }))
     cookies.set('idols', serializeIdols(this.state.idols))

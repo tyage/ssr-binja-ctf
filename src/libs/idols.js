@@ -30,13 +30,17 @@ const getRandomItem = (items) => {
   return items[index]
 }
 
-export const getNewIdol = (props) => {
-  const name = getRandomItem(Object.keys(idolFactories))
-  const rarity = getRandomItem(Object.keys(idolFactories[name]))
+const generateIdol = (name, rarity, props) => {
   const idol = idolFactories[name][rarity](props)
   idol.name = name
   idol.rarity = rarity
   return idol
+}
+
+export const getRandomIdol = (props) => {
+  const name = getRandomItem(Object.keys(idolFactories))
+  const rarity = getRandomItem(Object.keys(idolFactories[name]))
+  return generateIdol(name, rarity, props)
 }
 export const serializeIdols = (idols) => {
   if (!idols) {
@@ -53,7 +57,6 @@ export const unserializeIdols = (idolsData) => {
   }
 
   return idolsData.map(({name, rarity, props}) => {
-    const idolClass = idolFactories[name][rarity]
-    return new idolClass(props)
+    return generateIdol(name, rarity, props)
   })
 }
