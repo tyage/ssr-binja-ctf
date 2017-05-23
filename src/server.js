@@ -7,7 +7,7 @@ import App from './App'
 
 const app = Express()
 
-app.use('/build', Express.static('build'))
+app.use('/public', Express.static('public'))
   .use(cookiesMiddleware())
 
 app.get('*', (req, res) => {
