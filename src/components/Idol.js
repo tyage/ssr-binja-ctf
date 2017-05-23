@@ -25,11 +25,11 @@ class Idol extends Component {
     return (
       <div>
         <p>{ idol[idolAction]() }</p>
-        <div>
-          <Link to={ `/idols/${id}/say1` }>voice 1</Link>
-          <Link to={ `/idols/${id}/say2` }>voice 2</Link>
-          <Link to={ `/idols/${id}/say3` }>voice 3</Link>
-        </div>
+        <ul>
+          <li><Link to={ `/idols/${id}/say1` }>voice 1</Link></li>
+          <li><Link to={ `/idols/${id}/say2` }>voice 2</Link></li>
+          <li><Link to={ `/idols/${id}/say3` }>voice 3</Link></li>
+        </ul>
       </div>
     )
   }

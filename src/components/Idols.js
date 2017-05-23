@@ -5,7 +5,7 @@ import { getRandomIdol, unserializeIdols, serializeIdols } from '../libs/idols'
 
 class Idols extends Component {
   constructor(props) {
-    const { cookies } = this.props
+    const { cookies } = props
 
     super(props)
 
