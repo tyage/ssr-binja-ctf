@@ -5,9 +5,10 @@ import { getRandomIdol, unserializeIdols, serializeIdols } from '../libs/idols'
 
 class Idols extends Component {
   constructor(props) {
+    const { cookies } = this.props
+
     super(props)
 
-    const { cookies } = this.props
     this.state = {
       idols: unserializeIdols(cookies.get('idols'))
     }
@@ -27,6 +28,7 @@ class Idols extends Component {
 
   render() {
     const { idols } = this.state
+
     const idolList = () => {
       return idols.map((idol, i) => {
         return (

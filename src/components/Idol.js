@@ -11,6 +11,7 @@ class Idol extends Component {
   render() {
     const { id, action } = this.props.match.params
     const { cookies } = this.props
+
     const idol = unserializeIdols(cookies.get('idols'))[id]
     if (!idol) {
       return <div>Invalid Idol!!</div>
