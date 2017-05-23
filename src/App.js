@@ -1,8 +1,23 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router'
-import { CookiesProvider } from 'react-cookie';
+import { withCookies, CookiesProvider } from 'react-cookie';
 import { Link } from 'react-router-dom'
 import { Login, Idols, Idol } from './components'
+import { isAuthenticated } from './libs/auth'
+
+const PrivateRoute = ({ component: Component, cookies, ...rest }) => (
+  <Route {...rest} render={props => (
+    isAuthenticated(cookies) ? (
+      <Component {...props}/>
+    ) : (
+      <Redirect to={{
+        pathname: '/login',
+        state: { from: props.location }
+      }}/>
+    )
+  )}/>
+)
+const PrivateRouteWithCookies = withCookies(PrivateRoute)
 
 const App = ({ cookies }) => (
   <CookiesProvider cookies={cookies}>
@@ -16,9 +31,10 @@ const App = ({ cookies }) => (
       <div id="app-contents">
         <Switch>
           <Route path="/login" component={Login} />
-          <Route path="/idols/:id/:action" component={Idol} />
-          <Route path="/idols/:id" component={Idol} />
-          <Route path="/idols" component={Idols} />
+          <PrivateRouteWithCookies path="/idols/:id/:action" component={Idol} />
+          <PrivateRouteWithCookies path="/idols/:id" component={Idol} />
+          <PrivateRouteWithCookies path="/idols" component={Idols} />
+          <Redirect from='/' to='/idols'/>
         </Switch>
       </div>
       <footer id="app-footer"></footer>
