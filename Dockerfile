@@ -2,6 +2,7 @@ FROM node
 
 ARG SRCDIR="/usr/local/ssr"
 
+RUN mkdir ${SRCDIR}
 ADD . ${SRCDIR}
 
 RUN set -x \
