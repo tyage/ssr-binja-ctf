@@ -2,14 +2,12 @@ FROM node
 
 ARG SRCDIR="/usr/local/ssr"
 
-RUN mkdir ${SRCDIR}
 ADD . ${SRCDIR}
+WORKDIR ${SRCDIR}
 
-RUN set -x \
-  cd ${SRCDIR} && \
+RUN set -x && \
   npm install && \
   ./node_modules/.bin/webpack
 
-WORKDIR ${SRCDIR}
 CMD node build/server.js
 EXPOSE 8080
