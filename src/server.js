@@ -36,7 +36,7 @@ function renderPage(appHtml) {
     <title>My First React Router App</title>
     <link rel=stylesheet href=/index.css>
     <div id=app>${appHtml}</div>
-    <script src="/build/client.js"></script>
+    <script src="/public/client.js"></script>
    `
 }
 
