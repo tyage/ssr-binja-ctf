@@ -2,5 +2,5 @@
 
 ```sh
 $ docker build -t ssr .
-$ docker run -it --rm --name -p 8080:8080 ssr ssr
+$ docker run -d -it --rm --name ssr -p 8080:8080 ssr
 ```
