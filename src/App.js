@@ -23,6 +23,7 @@ const App = ({ cookies }) => (
   <CookiesProvider cookies={cookies}>
     <div>
       <header id="app-header">
+        <h1>SSR - Get Super Super Rare Idol!</h1>
         <ul>
           <li><Link to={ `/login` }>login</Link></li>
           <li><Link to={ `/idols` }>check your idols!</Link></li>

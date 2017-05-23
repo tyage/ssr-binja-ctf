@@ -33,7 +33,7 @@ function renderPage(appHtml) {
     <!doctype html public="storage">
     <html>
     <meta charset=utf-8/>
-    <title>My First React Router App</title>
+    <title>SSR</title>
     <link rel=stylesheet href=/index.css>
     <div id=app>${appHtml}</div>
     <script src="/public/client.js"></script>
