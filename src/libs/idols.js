@@ -6,17 +6,16 @@ const getRandomItem = (items) => {
 }
 
 const generateIdol = (key, props) => {
-  const idolClass = idolDatabase[key.rarity][key.idolNo]
-  const idol = new idolClass(props)
-  idol.key = key
-  return idol
+  const [ rarity, idolNo ] = key
+  const idolClass = idolDatabase[rarity][idolNo]
+  return new idolClass(key)
 }
 
 export const getRandomIdol = (props) => {
   // TODO: choose rarity with rate table
   const rarity = getRandomItem(Object.keys(idolDatabase))
   const idolNo = getRandomItem(Object.keys(idolDatabase[rarity]))
-  const idolKey = { rarity, idolNo }
+  const idolKey = [ rarity, idolNo ]
   return generateIdol(idolKey, props)
 }
 export const serializeIdols = (idols) => {
@@ -25,7 +24,7 @@ export const serializeIdols = (idols) => {
   }
 
   return idols.map(idol => {
-    return { key: idol.key, props: idol.props }
+    return { key: idol.key }
   })
 }
 export const unserializeIdols = (idolsData) => {
@@ -33,7 +32,7 @@ export const unserializeIdols = (idolsData) => {
     return []
   }
 
-  return idolsData.map(({ key, props }) => {
-    return generateIdol(key, props)
+  return idolsData.map(({ key }) => {
+    return generateIdol(key)
   })
 }

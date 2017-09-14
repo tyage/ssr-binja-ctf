@@ -1,8 +1,6 @@
 class Idol {
-  constructor(props) {
-    this.props = Object.assign(props, {
-      defaultAction: 'say'
-    })
+  constructor(key) {
+    this.key = key
   }
   say1() {}
   say2() {
@@ -16,7 +14,7 @@ class Idol {
 class SRUzuki extends Idol {
   name = '[SR] Uzuki'
   say1() {
-    return `Hello ${this.props.producerName}! This is uzuki! Nice to meet you.`
+    return `Hello, This is uzuki! Nice to meet you.`
   }
 }
 class SRRin extends Idol {
@@ -28,7 +26,7 @@ class SRRin extends Idol {
 class SRMio extends Idol {
   name = '[SR] Mio'
   say1() {
-    return `Hi ${this.props.producerName}! Call me mio!`
+    return `Hi, Call me mio!`
   }
 }
 
