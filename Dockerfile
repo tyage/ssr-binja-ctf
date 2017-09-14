@@ -8,8 +8,8 @@ WORKDIR ${SRCDIR}
 
 RUN set -x && \
   npm install && \
-  ./node_modules/.bin/webpack
+  npm run build
 
-CMD node build/server.js
+CMD node start
 
 EXPOSE 8080
