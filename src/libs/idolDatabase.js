@@ -14,16 +14,19 @@ class Idol {
 }
 
 class SRUzuki extends Idol {
+  name = '[SR] Uzuki'
   say1() {
     return `Hello ${this.props.producerName}! This is uzuki! Nice to meet you.`
   }
 }
 class SRRin extends Idol {
+  name = '[SR] Rin'
   say1() {
     return `This is rin. You are my producer, I see.`
   }
 }
 class SRMio extends Idol {
+  name = '[SR] Mio'
   say1() {
     return `Hi ${this.props.producerName}! Call me mio!`
   }
