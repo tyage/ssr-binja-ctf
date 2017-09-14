@@ -20,20 +20,20 @@
   },
   "homepage": "https://github.com/tyage/ssr-binja-ctf#readme",
   "dependencies": {
-    "express": "^4.15.2",
-    "react": "^15.5.4",
-    "react-cookie": "^2.0.7",
-    "react-dom": "^15.5.4",
-    "react-router": "^4.1.1",
-    "react-router-dom": "^4.1.1",
-    "universal-cookie-express": "^2.0.5"
+    "express": "^4.15.4",
+    "react": "^15.6.1",
+    "react-cookie": "^2.1.1",
+    "react-dom": "^15.6.1",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "universal-cookie-express": "^2.1.0"
   },
   "devDependencies": {
-    "babel-core": "^6.24.1",
-    "babel-loader": "^7.0.0",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-preset-env": "^1.4.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
-    "webpack": "^2.5.1"
+    "webpack": "^2.7.0"
   }
 }
