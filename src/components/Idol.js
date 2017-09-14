@@ -17,14 +17,14 @@ class Idol extends Component {
       return <div>Invalid Idol!!</div>
     }
 
-    const idolAction = action || 'say1'
-    if (!idol[idolAction]) {
+    const idolAction = idol[action || 'say1']
+    if (!idolAction) {
       return <div>Invalid Action!!</div>
     }
 
     return (
       <div>
-        <p>{ idol[idolAction]() }</p>
+        <p>{ idolAction() }</p>
         <ul>
           <li><Link to={ `/idols/${id}/say1` }>voice 1</Link></li>
           <li><Link to={ `/idols/${id}/say2` }>voice 2</Link></li>
