@@ -22,14 +22,24 @@ const PrivateRouteWithCookies = withCookies(PrivateRoute)
 const App = ({ cookies }) => (
   <CookiesProvider cookies={cookies}>
     <div>
-      <header id="app-header">
-        <h1>SSR - Get Super Super Rare Idol!</h1>
-        <ul>
-          <li><Link to={ `/login` }>login</Link></li>
-          <li><Link to={ `/idols` }>check your idols!</Link></li>
-        </ul>
+      <header className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <Link to="/" className="navbar-brand">SSR - Get Super Super Rare Idol!</Link>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#globalHeaderNav" aria-controls="globalHeaderNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        <div className="collapse navbar-collapse" id="globalHeaderNav">
+          <ul className="navbar-nav mr-auto">
+            <li className="nav-item">
+              <Link to="/login" className="nav-link">login</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/idols" className="nav-link">check your idols!</Link>
+            </li>
+          </ul>
+        </div>
       </header>
-      <div id="app-contents">
+      <div className="container">
         <Switch>
           <Route path="/login" component={Login} />
           <PrivateRouteWithCookies path="/idols/:id/:action" component={Idol} />
@@ -38,7 +48,6 @@ const App = ({ cookies }) => (
           <Redirect from='/' to='/idols'/>
         </Switch>
       </div>
-      <footer id="app-footer"></footer>
     </div>
   </CookiesProvider>
 )
