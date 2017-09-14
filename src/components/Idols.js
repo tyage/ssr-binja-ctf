@@ -17,9 +17,7 @@ class Idols extends Component {
   onGacha() {
     const { cookies } = this.props
 
-    this.state.idols.push(getRandomIdol({
-      producerName: cookies.get('username')
-    }))
+    this.state.idols.push(getRandomIdol())
     cookies.set('idols', serializeIdols(this.state.idols))
     this.setState({
       idols: this.state.idols

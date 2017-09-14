@@ -30,6 +30,4 @@ const NavBar = ({ cookies }) => (
   </header>
 )
 
-const NavBarWithCookies = withCookies(NavBar)
-
-export default NavBarWithCookies
+export default withCookies(NavBar)

@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch, Route, Redirect } from 'react-router'
 import { withCookies, CookiesProvider } from 'react-cookie';
 import { Link } from 'react-router-dom'
-import { Login, Idols, Idol, NavBar } from './components'
+import { Login, Logout, Idols, Idol, NavBar } from './components'
 import { isAuthenticated } from './libs/auth'
 
 const PrivateRoute = ({ component: Component, cookies, ...rest }) => (
@@ -26,10 +26,11 @@ const App = ({ cookies }) => (
       <div className="container">
         <Switch>
           <Route path="/login" component={Login} />
+          <Route path="/logout" component={Logout} />
           <PrivateRouteWithCookies path="/idols/:id/:action" component={Idol} />
           <PrivateRouteWithCookies path="/idols/:id" component={Idol} />
           <PrivateRouteWithCookies path="/idols" component={Idols} />
-          <Redirect from='/' to='/idols'/>
+          <Redirect from="/" to="/idols" />
         </Switch>
       </div>
     </div>

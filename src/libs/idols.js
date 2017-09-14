@@ -5,18 +5,18 @@ const getRandomItem = (items) => {
   return items[index]
 }
 
-const generateIdol = (key, props) => {
+const generateIdol = (key) => {
   const [ rarity, idolNo ] = key
   const idolClass = idolDatabase[rarity][idolNo]
   return new idolClass(key)
 }
 
-export const getRandomIdol = (props) => {
+export const getRandomIdol = () => {
   // TODO: choose rarity with rate table
   const rarity = getRandomItem(Object.keys(idolDatabase))
   const idolNo = getRandomItem(Object.keys(idolDatabase[rarity]))
   const idolKey = [ rarity, idolNo ]
-  return generateIdol(idolKey, props)
+  return generateIdol(idolKey)
 }
 export const serializeIdols = (idols) => {
   if (!idols) {
