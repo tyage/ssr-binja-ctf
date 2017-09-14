@@ -30,12 +30,17 @@ class Login extends Component {
     }
 
     return (
-      <div>
-        <p>Please input an username and login</p>
+      <div className="login-form">
+        <h2>Please login</h2>
 
         <form onSubmit={this.onSubmit.bind(this)}>
-          <input type="text" ref={(input) => this.username = input} />
-          <button>Login</button>
+          <div className="form-group row">
+            <label htmlFor="username" className="col-sm-4 col-form-label">Username</label>
+            <div className="col-sm-8">
+              <input type="text" className="form-control" id="username" placeholder="username" ref={(input) => this.username = input} required />
+            </div>
+          </div>
+          <button type="submit" className="btn btn-lg btn-primary btn-block">Login</button>
         </form>
       </div>
     )
