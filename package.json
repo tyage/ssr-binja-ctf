@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
+    "build": "gulp",
+    "watch": "gulp watch",
     "start": "node build/server.js"
   },
   "repository": {
@@ -36,6 +37,10 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
-    "webpack": "^2.7.0"
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.3.2",
+    "gulp-plumber": "^1.1.0",
+    "webpack": "^2.7.0",
+    "webpack-stream": "^4.0.0"
   }
 }
