@@ -19,7 +19,7 @@ gulp.task('css', () => (
     .pipe(plumber())
     .pipe(less())
     .on('error', (e) => console.error(e))
-    .pipe(gulp.dest('public'))
+    .pipe(gulp.dest('build'))
 ));
 
 gulp.task('watch', () => {
