@@ -17,8 +17,8 @@ class Idol extends Component {
       return <div>Invalid Idol!!</div>
     }
 
-    const idolAction = idol[action || 'say1']
-    if (!idolAction) {
+    const idolAction = action || 'say1'
+    if (!idol[idolAction]) {
       return <div>Invalid Action!!</div>
     }
 
@@ -29,7 +29,7 @@ class Idol extends Component {
         <div>
           <h2>{ idol.name }</h2>
           <img src={ idol.image } alt="" />
-          <p>{ idolAction() }</p>
+          <p>{ idol[idolAction]() }</p>
           <ul>
             <li><Link to={ `/idols/${id}/say1` }>voice 1</Link></li>
             <li><Link to={ `/idols/${id}/say2` }>voice 2</Link></li>
