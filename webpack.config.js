@@ -39,8 +39,7 @@ const clientConfig = Object.assign({
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'client.js'
-  },
-  devtool: 'inline-source-map'
+  }
 }, commonConfig)
 
 module.exports = [serverConfig, clientConfig]
