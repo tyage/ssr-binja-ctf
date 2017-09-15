@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "gulp",
     "watch": "gulp watch",
-    "start": "node build/server.js"
+    "start": "node build/server.js",
+    "dev": "nodemon --watch build build/server.js"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,7 @@
     "gulp": "^3.9.1",
     "gulp-less": "^3.3.2",
     "gulp-plumber": "^1.1.0",
+    "nodemon": "^1.12.0",
     "webpack": "^2.7.0",
     "webpack-stream": "^4.0.0"
   }
