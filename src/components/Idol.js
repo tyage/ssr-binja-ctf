@@ -24,6 +24,7 @@ class Idol extends Component {
 
     return (
       <div>
+        <img src={ idol.image } alt=""/>
         <p>{ idolAction() }</p>
         <ul>
           <li><Link to={ `/idols/${id}/say1` }>voice 1</Link></li>

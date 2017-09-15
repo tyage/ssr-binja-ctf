@@ -1,4 +1,5 @@
 class Idol {
+  image = '/public/images/idol1.png'
   constructor(key) {
     this.key = key
   }
@@ -12,18 +13,21 @@ class Idol {
 }
 
 class SRUzuki extends Idol {
+  image = '/public/images/idol2.png'
   name = '[SR] Uzuki'
   say1() {
     return `Hello, This is uzuki! Nice to meet you.`
   }
 }
 class SRRin extends Idol {
+  image = '/public/images/idol2.png'
   name = '[SR] Rin'
   say1() {
     return `This is rin. You are my producer, I see.`
   }
 }
 class SRMio extends Idol {
+  image = '/public/images/idol2.png'
   name = '[SR] Mio'
   say1() {
     return `Hi, Call me mio!`
