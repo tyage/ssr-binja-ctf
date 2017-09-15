@@ -10,6 +10,6 @@ RUN set -x && \
   npm install && \
   npm run build
 
-CMD node start
+CMD npm start
 
 EXPOSE 8080
