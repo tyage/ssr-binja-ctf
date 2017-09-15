@@ -41,7 +41,7 @@ class Idols extends Component {
 
     return (
       <div>
-        <button onClick={this.onGacha.bind(this)}>
+        <button onClick={this.onGacha.bind(this)} className="btn btn-primary">
           Get a new idol!
         </button>
         <ul>
