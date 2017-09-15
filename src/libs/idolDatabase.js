@@ -12,6 +12,13 @@ class Idol {
   }
 }
 
+class SSRUzuki extends Idol {
+  image = '/public/images/idol1.png'
+  name = '[SSR] Uzuki'
+  say1() {
+    return `Hello, This is uzuki! Nice to meet you.`
+  }
+}
 class SRUzuki extends Idol {
   image = '/public/images/idol2.png'
   name = '[SR] Uzuki'
@@ -33,10 +40,17 @@ class SRMio extends Idol {
     return `Hi, Call me mio!`
   }
 }
+class RUzuki extends Idol {
+  image = '/public/images/idol3.png'
+  name = '[R] Mio'
+  say1() {
+    return `Hi, Call me mio!`
+  }
+}
 
 const idolDatabase = {
   ssr: [
-    SRUzuki
+    SSRUzuki
   ],
   sr: [
     SRUzuki,
@@ -44,7 +58,7 @@ const idolDatabase = {
     SRMio
   ],
   r: [
-    SRMio
+    RUzuki
   ]
 }
 
