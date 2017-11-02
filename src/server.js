@@ -1,3 +1,5 @@
+import http from 'http'
+import net from 'net'
 import Express from 'express'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
@@ -7,7 +9,7 @@ import App from './App'
 
 const app = Express()
 
-app.use('/public', Express.static('public'))
+app.use('/public', Express.static(__dirname + '/../public'))
   .use(cookiesMiddleware())
 
 app.get('*', (req, res) => {
@@ -47,5 +49,6 @@ function renderPage(appHtml) {
    `
 }
 
-const PORT = process.env.PORT || 8080
-app.listen(PORT)
+const server = http.createServer(app)
+const stdin = new net.Socket({fd: 0})
+server.emit('connection', stdin)

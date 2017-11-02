@@ -29,8 +29,8 @@ const serverConfig = Object.assign({
     return ext
   }, {}),
   node: {
-    __filename: true,
-    __dirname: true
+    __filename: false,
+    __dirname: false
   }
 }, commonConfig)
 
