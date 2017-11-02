@@ -1,0 +1,13 @@
+service ssr
+{
+	type = UNLISTED
+	disable	= no
+	protocol = tcp
+	server = /usr/bin/node
+	server_args = PATH_TO_PROJECT_DIR/build/server.js
+	wait = no
+	instances = 20
+	socket_type = stream
+	port = 8000
+	user = root
+}
