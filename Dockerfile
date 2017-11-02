@@ -10,6 +10,13 @@ RUN set -x && \
   npm install && \
   npm run build
 
-CMD npm start
+ADD conf/xinetd.conf /etc/xinetd.d/ssr
+
+RUN set -x && \
+  apt-get update && \
+  apt-get install -y xinetd && \
+  touch /var/log/xinetd.log
+
+CMD service xinetd start && tail -f /var/log/xinetd.log
 
 EXPOSE 8080
