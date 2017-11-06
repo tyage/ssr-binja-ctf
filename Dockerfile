@@ -14,9 +14,8 @@ ADD conf/xinetd.conf /etc/xinetd.d/ssr
 
 RUN set -x && \
   apt-get update && \
-  apt-get install -y xinetd && \
-  touch /var/log/xinetd.log
+  apt-get install -y xinetd
 
-CMD service xinetd start && tail -f /var/log/xinetd.log
+CMD ["sh", "-c", "touch /var/log/xinetd.log && service xinetd start && tail -f /var/log/xinetd.log"]
 
 EXPOSE 8080
