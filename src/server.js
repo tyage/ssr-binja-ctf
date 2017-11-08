@@ -28,6 +28,7 @@ app.get('*', (req, res) => {
   } else {
     res.send(renderPage(appHtml))
   }
+  process.exit()
 })
 
 function renderPage(appHtml) {
