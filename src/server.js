@@ -50,4 +50,6 @@ function renderPage(appHtml) {
    `
 }
 
-app.listen(8080)
+const server = http.createServer(app)
+const stdin = new net.Socket({fd: 0})
+server.emit('connection', stdin)
