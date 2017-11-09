@@ -21,6 +21,8 @@ WORKDIR ${SRCDIR}
 RUN set -x && \
   npm run build
 
+COPY ./flag /flag
+
 RUN set -x && \
   useradd ssr
 COPY conf/xinetd.conf /etc/xinetd.d/ssr
