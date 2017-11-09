@@ -28,7 +28,6 @@ app.get('*', (req, res) => {
   } else {
     res.send(renderPage(appHtml))
   }
-  process.exit()
 })
 
 function renderPage(appHtml) {
@@ -51,4 +50,6 @@ function renderPage(appHtml) {
    `
 }
 
-app.listen(8080)
+const server = http.createServer(app)
+const stdin = new net.Socket({fd: 0})
+server.emit('connection', stdin)
